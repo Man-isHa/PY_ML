@@ -12,11 +12,7 @@ from sklearn import datasets
 #from sklearn.linear_model import LogisticRegressionCV
 digits= datasets.load_digits()
 images_and_labels = list(zip(digits.images, digits.target))
-#for index, (image, label) in enumerate(images_and_labels[:7]):
-#    plt.subplot(2, 7, index + 1)
-#    plt.axis('off')
-#    plt.imshow(image, cmap=plt.cm.gray_r, interpolation='nearest')
-#    plt.title('Training: %i' % label)
+
 def sigmoid(x):
     return 1/(1+np.exp(-x))
 n_samples=len(digits.images)
@@ -26,35 +22,7 @@ X=data[:n_samples]
 #X[X<10]=0
 #X[X>=10]=1
 X=sigmoid(X)
-#np.random.seed(0)
-#X,y = make_moons(200, noise=0.20)
-#plt.scatter(X[:,0], X[:,1], s=40, c=y, cmap=plt.cm.Spectral)
-#clf = LogisticRegressionCV()
-#clf.fit(X, X)
-##h = .02
-##
-##x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
-##y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
-##xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
-##                     np.arange(y_min, y_max, h))
-##
-### Plot the decision boundary. For that, we will assign a color to each
-### point in the mesh [x_min, m_max]x[y_min, y_max].
-##fig, ax = plt.subplots()
-##Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
-##
-### Put the result into a color plot
-##Z = Z.reshape(xx.shape)
-##ax.contourf(xx, yy, Z, cmap=plt.cm.Paired)
-##ax.axis('off')
-##
-### Plot also the training points
-##ax.scatter(X[:, 0], X[:, 1], c=y, cmap=plt.cm.Paired)
-##
-### Plot the decision boundary
-###plot_decision_boundary(lambda x: clf.predict(x))
-##ax.set_title("Logistic Regression")
-##
+
 var=X.shape
 num_examples = len(X) # training set size
 nn_input_dim = var[1]# input layer dimensionality
@@ -68,9 +36,6 @@ beta =0.01
 
 
 p=0.05
-    
-
-
     
 def calculate_loss(model):
     W1, b1, W2, b2 = model['W1'], model['b1'], model['W2'], model['b2']
